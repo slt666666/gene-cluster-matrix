@@ -1,6 +1,12 @@
 import numpy as np
 import pandas as pd
 
+
+# Following functions generate input data for plotly library.
+# calc_distance() function calculate distance between all combinations of genes.
+# heatmap_matrix() function generate distance information filtered by threshold distance.
+# hover_text() function generate the descriptions of each component in html file.
+
 def calc_distance(position, order):
     
     # extract id order before sort by position
@@ -42,17 +48,27 @@ def heatmap_matrix(distance, threshold):
     z_data[z_data > threshold] = threshold
     return z_data
 
-def hover_text(distance, order):
+def hover_text(distance, order, clade):
+    if clade != None:
+        clade_df = pd.read_csv(clade, index_col=0)
+
     hovertext = list()
     for yi, yy in enumerate(order[::-1]):
         hovertext.append(list())
         for xi, xx in enumerate(order):
-            ### basic hover text
-            hovertext[-1].append('1: {}<br />2: {}<br />Distance: {}'.format(
-                    yy,
-                    xx,
-                    distance.iloc[yi, xi]
+            ### hover text with clade info
+            if clade != None:
+                hovertext[-1].append('1: {} {}<br />2: {} {}<br />Distance: {}'.format(
+                        yy, clade_df.loc[yy, "clade"],
+                        xx, clade_df.loc[xx, "clade"], 
+                        distance.iloc[yi, xi]
+                    )
                 )
-            )
+            ### basic hover text
+            else:
+                hovertext[-1].append('1: {}<br />2: {}<br />Distance: {}'.format(
+                        yy, xx, distance.iloc[yi, xi]
+                    )
+                )
     hovertext = np.array(hovertext)
     return hovertext

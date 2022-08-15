@@ -1,31 +1,29 @@
-from BCBio import GFF
+import gffutils
 import pandas as pd
 
+from .make_tree import get_leaf_order
+
+
+# Following functions generate position data from gff3 format file by "gffutils" library.
+# gff_parse() function generate position data and id list ordered by id_list.
+# gff_tree_parse() function generate position data and id list ordered by tree file.
 
 def read_txt_list(file):
     return pd.read_table(file, header=None).iloc[:, 0].values
 
-def gff_parse(gff_file, gff_type, id_list):
-
+def get_position_from_gff(gff_file, gff_feature, ids, out):
     position = list()
-
-    ids = read_txt_list(id_list)
-
-    in_handle = open(gff_file)
-    # parse gff for each gff_id (chromosome, contig, scaffold) 
-    for rec in GFF.parse(in_handle, limit_info=dict(gff_type=[gff_type])):
-        # extract feature record for each gene or mRNA
-        for feature in rec.features:
-            name = feature.qualifiers["Name"][0]
-            # only ids in input ID list
-            if name in ids:
-                position.append([
-                    name,
-                    rec.id,
-                    int(feature.location.start),
-                    int(feature.location.end)
-                ])
-    in_handle.close()
+    
+    db = gffutils.create_db(gff_file, ':memory:', merge_strategy='create_unique', keep_order=False, sort_attribute_values=False)
+    for feature in db.features_of_type(gff_feature, order_by=['seqid', 'start']):
+        name = feature.attributes['Name'][0]
+        if name in ids:
+            position.append([
+                name,
+                feature.seqid,
+                int(feature.start),
+                int(feature.end)
+            ])
 
     position = pd.DataFrame(position, columns=["id", "chr", "start", "end"])
     position = position.sort_values(by=["chr", "start"])
@@ -35,11 +33,21 @@ def gff_parse(gff_file, gff_type, id_list):
     noinfo = [i for i in ids if i not in position.id.values]
     if len(noinfo) > 0:
         print(noinfo, "are no information in gff file, so they are removed for further process.")
-
+    # save position data as csv file
+    position.to_csv("{}_position.csv".format(out))
     return position, order
 
+def gff_parse(gff_file, gff_feature, out, id_list):
+    ids = read_txt_list(id_list)
+    position, order = get_position_from_gff(gff_file, gff_feature, ids, out)
+    return position, order
+
+def gff_tree_parse(gff_file, gff_feature, out, tree):
+    ids = get_leaf_order(tree)
+    position, order = get_position_from_gff(gff_file, gff_feature, ids, out)
+    return position, order
 
 def csv_parse(gff_csv):
     position = pd.read_csv(gff_csv)
     order = position.id.values
-    return position
+    return position, order
