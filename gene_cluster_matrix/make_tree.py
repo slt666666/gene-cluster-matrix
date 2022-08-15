@@ -2,6 +2,7 @@ import toytree
 import toyplot
 import toyplot.png
 import numpy as np
+import pandas as pd
 from PIL import Image, ImageOps
 
 
@@ -17,7 +18,7 @@ def get_leaf_order(tree):
     tree = toytree.tree(nwk, tree_format=0)
     return tree.get_tip_labels()
 
-def make_tree_figure(tree, out):
+def make_tree_figure(tree, out, clade):
     # load a toytree from a newick string
     f = open(tree, 'r')
     nwk = f.read()
@@ -38,12 +39,26 @@ def make_tree_figure(tree, out):
     }
     # generate png file
     canvas, axes, mark = tree.draw(height=1000, width=4000, **params)
+
+    if clade != None:
+        # add clade information
+        clade = pd.read_csv(clade, index_col=0)
+        clade_set = list(clade.clade.unique())
+        # plot clade color
+        axes.scatterplot(
+            np.arange(tree.ntips),
+            np.repeat(-0.1, tree.ntips),
+            marker='s',
+            size=25*180/tree.ntips,
+            color=[toytree.colors[clade_set.index(clade.loc[i, "clade"])] for i in tree.get_tip_labels()],
+            opacity=0.5,
+        )
+
     toyplot.png.render(canvas, "{}_tree.png".format(out))
 
     # load image by PIL
     img = Image.open('{}_tree.png'.format(out))
     # make top tree image
-    img = ImageOps.mirror(img)
     top_image = img.crop(img.getbbox())
     # make left tree image
     rotate_image = img.rotate(90, expand=True)

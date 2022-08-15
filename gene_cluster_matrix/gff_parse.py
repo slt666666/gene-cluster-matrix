@@ -1,3 +1,4 @@
+import sys
 import gffutils
 import pandas as pd
 
@@ -9,7 +10,14 @@ from .make_tree import get_leaf_order
 # gff_tree_parse() function generate position data and id list ordered by tree file.
 
 def read_txt_list(file):
-    return pd.read_table(file, header=None).iloc[:, 0].values
+    return pd.read_csv(file, header=None).iloc[:, 0].values
+
+def check_clade(order, clade):
+    if clade != None:
+        clade = read_txt_list(clade)
+        if len([i for i in order if i not in clade]) > 0:
+            print("Clade file missed some ids in id_list or tree or gff_csv file.")
+            sys.exit()
 
 def get_position_from_gff(gff_file, gff_feature, ids, out):
     position = list()
@@ -34,20 +42,23 @@ def get_position_from_gff(gff_file, gff_feature, ids, out):
     if len(noinfo) > 0:
         print(noinfo, "are no information in gff file, so they are removed for further process.")
     # save position data as csv file
-    position.to_csv("{}_position.csv".format(out))
+    position.to_csv("{}_position.csv".format(out), index=None)
     return position, order
 
-def gff_parse(gff_file, gff_feature, out, id_list):
+def gff_parse(gff_file, gff_feature, out, id_list, clade):
     ids = read_txt_list(id_list)
     position, order = get_position_from_gff(gff_file, gff_feature, ids, out)
+    check_clade(order, clade)
     return position, order
 
-def gff_tree_parse(gff_file, gff_feature, out, tree):
+def gff_tree_parse(gff_file, gff_feature, out, tree, clade):
     ids = get_leaf_order(tree)
     position, order = get_position_from_gff(gff_file, gff_feature, ids, out)
+    check_clade(order, clade)
     return position, order
 
-def csv_parse(gff_csv):
+def csv_parse(gff_csv, clade):
     position = pd.read_csv(gff_csv)
     order = position.id.values
+    check_clade(order, clade)
     return position, order

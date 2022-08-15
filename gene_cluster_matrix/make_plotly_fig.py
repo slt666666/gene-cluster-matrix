@@ -1,3 +1,4 @@
+import itertools
 import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
@@ -33,9 +34,9 @@ def line_object(clade, x, y):
     lines = []
     gene_num = clade.shape[0]
     start = -0.5
-    for i, each_clade in enumerate(clade.clade.unique()):
+    for k, g in itertools.groupby(clade.values):
         # calculate position of each line
-        start += clade.clade.value_counts()[each_clade]
+        start += len(list(g))
         # vertical lines
         lines.append(
             dict(
@@ -184,22 +185,24 @@ def heatmap_with_tree(z_data, text, order, out, tree, clade):
     fig.update_layout(layout)
 
     # generate png image file of phylogenetic tree
-    top_tree, left_tree = make_tree_figure(tree, out)
+    top_tree, left_tree = make_tree_figure(tree, out, clade)
+    # add top tree
     fig.add_layout_image(
         dict(
             source=top_tree,
             xref="x2", yref="y2",
-            x=0, y=0,
+            x=-0.5, y=0,
             sizex=len(order), sizey=len(order),
             xanchor="left", yanchor="bottom",
             layer="above",
         )
     )
+    # add left tree
     fig.add_layout_image(
         dict(
             source=left_tree,
             xref="x3", yref="y3",
-            x=1, y=0,
+            x=1, y=-0.5,
             sizex=len(order), sizey=len(order),
             xanchor="right", yanchor="bottom",
             layer="above",
