@@ -20,7 +20,7 @@ gene_cluster_matrix requires:
 
 `ghostscript` is required to generate phylogenetic tree image.
 
-c.f.) Lunux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
+c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 
 ## Install
 
@@ -32,24 +32,24 @@ c.f.) Lunux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 
 `gene_cluster_matrix -g sample.gff3 -i id_list.txt -o output_name`
 
-* distance matrix with phylogenetic tree
+* distance matrix with phylogenetic tree & ids in tree are mRNA
 
-`gene_cluster_matrix -g sample.gff3 -t tree.nwk -o output_name`
+`gene_cluster_matrix -g sample.gff3 -t tree.nwk -f mRNA -o output_name`
 
 * distance matrix with phylogenetic tree & clade information
 
-`gene_cluster_matrix -g sample.gff3 -t tree.nwk -s clade.csv -o output_name`
+`gene_cluster_matrix -g sample.gff3 -t tree.nwk -c clade.csv -o output_name`
 
 ### Input & Option
 ```
 (required)
--g or -c … GFF3 fomrat file of reference genome(gff3 file) / position data file (csv file. ex:sample/position.csv)
+-g or -p … GFF3 fomrat file of reference genome (gff3 file) / position data file (csv file. ex:sample/position.csv)
 -i or -t … Gene id list ordered by your preference (txt file) / phylogenetic tree file (newick format)
 -o … Output file name (string)
 (optional)
--d … Threshold distance to define gene cluster. (int. default=50000)
--f … Specify gff feature type (gene or mRNA) of input ids. (string. default=gene)
--s … Clade information for each gene/mRNA id. Format should be same as sample/clade.csv. (csv file. 1st column is ids, second column is clade for each id.)
+-d … Threshold distance to define gene cluster (int. default=50000)
+-f … Specify gff feature type (gene or mRNA) of input ids (string. default=gene)
+-c … Clade information for each gene/mRNA id. Format should be same as sample/clade.csv (csv file. 1st column is ids, second column is clade for each id.)
 ```
 
 ### Example
@@ -58,7 +58,7 @@ To view the examples, clone the gene_cluster_matrix repository and run by sample
 ```
 $ git clone https://github.com/slt666666/gene_cluster_matrix.git
 $ cd gene_cluster_matrix/sample_data
-$ gene_cluster_matrix -g sample.gff3 -t tree.nwk -s clade.csv -o output_name
+$ gene_cluster_matrix -g sample.gff3 -t sample.nwk -c clade.csv -f mRNA -o test
 ```
 
 ## Licence
