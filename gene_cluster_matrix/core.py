@@ -16,12 +16,13 @@ class GeneClusterMatrix:
     Input
     ----------
     gff         (-g): gff3 format file name, Annotation information of reference genome
+    gff_csv     (-c): csv format file name, Position data of csv file
+    (gff or gff_csv is required to get position data)
     id_list     (-i): txt file name, Ordered Gene/mRNA id list
     tree        (-t): newick format file name, Phylogenetic tree file (newick format)
-    gff_csv     (-c): csv format file name, Position data of csv file
-    (id_list or tree or gff_csv is required to specify gene order)
+    (id_list or tree is required to specify gene order)
     out         (-o): string , Output file name prefix
-    threshold   (-d): int default:5000, Threshold distance to define gene cluster
+    threshold   (-d): int default:50000, Threshold distance to define gene cluster
     gff_feature (-f): string (gene or mRNA), Specify gff type (gene or mRNA) depending on the input ids
     clade       (-s): csv format file name, Clade information to separate gene/mRNA ids
 
@@ -32,14 +33,14 @@ class GeneClusterMatrix:
     # matrix with phylogenetic tree & clade information
     gene_cluster_matrix -g sample.gff3 -t tree.nwk -o test -s clade.csv
     """
-    def __init__(self, gff, gff_feature, id_list, threshold, out, tree, gff_csv, clade):
+    def __init__(self, gff, gff_csv, id_list, tree, out, threshold, gff_feature, clade):
         self.gff = gff
-        self.gff_feature = gff_feature
-        self.id_list = id_list
-        self.threshold = threshold
-        self.out = out
-        self.tree = tree
         self.gff_csv = gff_csv
+        self.id_list = id_list
+        self.tree = tree
+        self.out = out
+        self.threshold = threshold
+        self.gff_feature = gff_feature
         self.clade = clade
     
     def get_position_and_order(self):
