@@ -6,6 +6,10 @@
 
 Gene cluster matrix is developed by Python program and distributed under the MIT license.
 
+## Install
+
+`pip install gene_cluster_matrix`
+
 ## Dependencies
 gene_cluster_matrix requires:
 * python (>= 3.6)
@@ -20,10 +24,6 @@ gene_cluster_matrix requires:
 `ghostscript` is required to generate phylogenetic tree image.
 
 c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
-
-## Install
-
-`pip install gene_cluster_matrix`
 
 ## Usage
 
