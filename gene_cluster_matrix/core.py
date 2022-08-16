@@ -16,7 +16,7 @@ class GeneClusterMatrix:
     Input
     ----------
     gff         (-g): gff3 format file name, Annotation information of reference genome
-    gff_csv     (-c): csv format file name, Position data of csv file
+    gff_csv     (-p): csv format file name, Position data of csv file
     (gff or gff_csv is required to get position data)
     id_list     (-i): txt file name, Ordered Gene/mRNA id list
     tree        (-t): newick format file name, Phylogenetic tree file (newick format)
@@ -24,14 +24,14 @@ class GeneClusterMatrix:
     out         (-o): string , Output file name prefix
     threshold   (-d): int default:50000, Threshold distance to define gene cluster
     gff_feature (-f): string (gene or mRNA), Specify gff type (gene or mRNA) depending on the input ids
-    clade       (-s): csv format file name, Clade information to separate gene/mRNA ids
+    clade       (-c): csv format file name, Clade information to separate gene/mRNA ids
 
     Examples
     --------
     # simple matrix
     gene_cluster_matrix -g sample.gff3 -i id_list.txt -o test
     # matrix with phylogenetic tree & clade information
-    gene_cluster_matrix -g sample.gff3 -t tree.nwk -o test -s clade.csv
+    gene_cluster_matrix -g sample.gff3 -t tree.nwk -o test -c clade.csv
     """
     def __init__(self, gff, gff_csv, id_list, tree, out, threshold, gff_feature, clade):
         self.gff = gff
@@ -48,7 +48,7 @@ class GeneClusterMatrix:
         if self.id_list != None:
             return gff_parse(self.gff, self.gff_feature, self.out, self.id_list, self.clade)
         elif self.gff_csv != None:
-            return csv_parse(self.gff_csv, self.clade)
+            return csv_parse(self.gff_csv, self.clade, self.tree)
         elif self.tree != None:
             return gff_tree_parse(self.gff, self.gff_feature, self.out, self.tree, self.clade)
 

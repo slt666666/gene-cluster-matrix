@@ -22,7 +22,7 @@ def heatmap_object(z_data, text, order):
         z=z_data,
         text=text,
         hoverinfo="text",
-        colorscale="Reds",
+        colorscale="Oranges",
         reversescale=True,
         colorbar=dict(
             len=0.7,

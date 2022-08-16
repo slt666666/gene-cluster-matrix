@@ -57,8 +57,11 @@ def gff_tree_parse(gff_file, gff_feature, out, tree, clade):
     check_clade(order, clade)
     return position, order
 
-def csv_parse(gff_csv, clade):
+def csv_parse(gff_csv, clade, tree):
     position = pd.read_csv(gff_csv)
     order = position.id.values
+    if tree != None:
+        ids = get_leaf_order(tree)
+        order = [i for i in ids if i in order]
     check_clade(order, clade)
     return position, order
