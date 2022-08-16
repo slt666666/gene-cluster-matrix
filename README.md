@@ -11,7 +11,7 @@ Gene cluster matrix is developed by Python program and distributed under the MIT
 `pip install gene_cluster_matrix`
 
 ## Dependencies
-gene_cluster_matrix requires:
+gene_cluster_matrix requires below libraries. (automatically install dependencies by pip install)
 * python (>= 3.6)
 * numpy (>= 1.20.0)
 * pandas (>= 1.2.0)
