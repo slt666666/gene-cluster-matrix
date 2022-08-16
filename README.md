@@ -43,7 +43,7 @@ c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 ### Input & Option
 ```
 (required)
--g or -p … GFF3 fomrat file of reference genome (gff3 file) / position data file (csv file, format should be same as sample/clade.csv)
+-g or -p … GFF3 fomrat file of reference genome (gff3 file) / position data file (csv file, format should be same as sample/position.csv)
 -i or -t … Gene id list ordered by your preference (txt file) / phylogenetic tree file (newick format)
 -o … Output file name (string)
 (optional)
