@@ -25,11 +25,15 @@ gene_cluster_matrix requires below libraries. (`pip install` automatically insta
 
 c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 
-## Usage
+## Usage examples
 
 * simple distance matrix (the order is the given list order)
 
 `gene_cluster_matrix -g sample.gff3 -i id_list.txt -o output_name`
+
+* simple distance matrix by hand-made position data (the order is the given list order)
+
+`gene_cluster_matrix -p position.csv -i id_list.txt -o output_name`
 
 * distance matrix with phylogenetic tree & ids in tree are mRNA (the order is the given tree tips)
 
