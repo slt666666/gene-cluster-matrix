@@ -29,14 +29,19 @@ c.f.) Lunux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 ## Usage
 
 * simple distance matrix
+
 `gene_cluster_matrix -g sample.gff3 -i id_list.txt -o output_name`
+
 * distance matrix with phylogenetic tree
+
 `gene_cluster_matrix -g sample.gff3 -t tree.nwk -o output_name`
+
 * distance matrix with phylogenetic tree & clade information
+
 `gene_cluster_matrix -g sample.gff3 -t tree.nwk -s clade.csv -o output_name`
 
 ### Input & Option
-
+```
 (required)
 -g or -c … GFF3 fomrat file (gff3 file) / position data file (csv file)
 -i or -t … Gene id list ordered by your preference (txt file) / phylogenetic tree file (newick format)
@@ -45,6 +50,7 @@ c.f.) Lunux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 -d … Threshold distance to define gene cluster. (int. default=50000)
 -f … Specify gff feature type (gene or mRNA) of input ids. (string. default=gene)
 -s … Clade information to separate gene/mRNA ids. (csv file. ex:sample/clade.csv)
+```
 
 ### Example
 To view the examples, clone the gene_cluster_matrix repository and run by sample data:
