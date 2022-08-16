@@ -23,7 +23,15 @@ def heatmap_object(z_data, text, order):
         text=text,
         hoverinfo="text",
         colorscale="Reds",
-        reversescale=True
+        reversescale=True,
+        colorbar=dict(
+            len=0.7,
+            title=dict(
+                text='distance',
+            ),
+            yanchor="bottom",
+            y=0
+        ),
     )
     # generate heatmap object
     trace = go.Heatmap(params)
