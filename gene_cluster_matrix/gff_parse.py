@@ -44,6 +44,7 @@ def get_position_from_gff(gff_file, gff_feature, ids, out):
         print(noinfo, "are no information in gff file, so they are removed for further process.")
     # save position data as csv file
     position.to_csv("{}_position.csv".format(out), index=None)
+    print("finish generating {}_position.csv".format(out))
     return position, order
 
 def gff_parse(gff_file, gff_feature, out, id_list, clade):

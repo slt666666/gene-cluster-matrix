@@ -51,6 +51,6 @@ setup(
     version=VERSION,
     install_requires=INSTALL_REQUIRES,
     python_requires=PYTHON_REQUIRES,
-    package=PACKAGES,
+    packages=PACKAGES,
     entry_points=ENTRY_POINTS,
 )
