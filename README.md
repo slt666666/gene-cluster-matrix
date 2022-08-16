@@ -1,6 +1,6 @@
 # Gene Cluster Matrix
 
-<p><img src="image/sample_matrix.png"　itemprop="image" width="350" align="right" />
+<p><img src="https://github.com/slt666666/gene_cluster_matrix/blob/main/image/sample_matrix.png?raw=true"　itemprop="image" width="350" align="right" />
 <h2>Description</h2>
 <strong>Gene cluter matrix</strong> is a command line tool to generate matrix that visualize distances between genes and gene clusters. The matrix is generated as interactive html file. This tool can also visualize phylogenetic tree and phylogenetically related & unrelated gene clusters.</p>
 

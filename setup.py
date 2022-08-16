@@ -45,6 +45,7 @@ setup(
     maintainer_email=AUTHOR_EMAIL,
     description=DESCRIPTION,
     long_description=long_description,
+    long_description_content_type='text/markdown',
     license=LICENSE,
     url=URL,
     version=VERSION,
