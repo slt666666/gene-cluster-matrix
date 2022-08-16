@@ -51,6 +51,13 @@ c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 -c … Clade information for each gene/mRNA id. (csv file. format should be same as sample/clade.csv)
 ```
 
+### Output
+```
+XXX.html or XXX_with_tree.html … interactive html file that visualize gene cluster matrix
+XXX_position.csv … position data for each id in input such as id_list or tree
+XXX_tree.png … phylogenetic tree figure (if -t option is used)
+```
+
 ### Example
 To view the examples, clone the gene_cluster_matrix repository and run by sample data:
 

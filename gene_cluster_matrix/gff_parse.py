@@ -20,6 +20,7 @@ def check_clade(order, clade):
             sys.exit()
 
 def get_position_from_gff(gff_file, gff_feature, ids, out):
+    print("start parse gff file.")
     position = list()
     
     db = gffutils.create_db(gff_file, ':memory:', merge_strategy='create_unique', keep_order=False, sort_attribute_values=False)

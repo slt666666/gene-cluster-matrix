@@ -125,6 +125,7 @@ def heatmap(z_data, text, order, out, clade):
 
     # generate html file
     plot(fig, filename="{}.html".format(out))
+    print("finish generating {}.html file".format(out))
 
 def heatmap_with_tree(z_data, text, order, out, tree, clade):
 
@@ -193,7 +194,7 @@ def heatmap_with_tree(z_data, text, order, out, tree, clade):
     fig.update_layout(layout)
 
     # generate png image file of phylogenetic tree
-    top_tree, left_tree = make_tree_figure(tree, out, clade)
+    top_tree, left_tree = make_tree_figure(tree, out, order, clade)
     # add top tree
     fig.add_layout_image(
         dict(
@@ -229,3 +230,4 @@ def heatmap_with_tree(z_data, text, order, out, tree, clade):
 
     # generate html output file
     plot(fig, filename="{}_with_tree.html".format(out), auto_open=False)
+    print("finish generating {}_with_tree.html file".format(out))

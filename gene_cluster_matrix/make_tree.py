@@ -18,12 +18,18 @@ def get_leaf_order(tree):
     tree = toytree.tree(nwk, tree_format=0)
     return tree.get_tip_labels()
 
-def make_tree_figure(tree, out, clade):
+def make_tree_figure(tree, out, order, clade):
     # load a toytree from a newick string
     f = open(tree, 'r')
     nwk = f.read()
     f.close()
     tree = toytree.tree(nwk, tree_format=0)
+
+    # remove tips (no info in gff file) from tree
+    tree_ids = tree.get_tip_labels()
+    if len(tree_ids) != len(order):
+        drop_ids = [i for i in tree_ids if i not in order]
+        tree = tree.drop_tips(drop_ids)
 
     # setting parameters of tree components
     params = {
@@ -55,6 +61,7 @@ def make_tree_figure(tree, out, clade):
         )
 
     toyplot.png.render(canvas, "{}_tree.png".format(out))
+    print("finish generating {}_tree.png".format(out))
 
     # load image by PIL
     img = Image.open('{}_tree.png'.format(out))
