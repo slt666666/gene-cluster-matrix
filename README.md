@@ -27,15 +27,15 @@ c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 
 ## Usage
 
-* simple distance matrix
+* simple distance matrix (the order is the given list order)
 
 `gene_cluster_matrix -g sample.gff3 -i id_list.txt -o output_name`
 
-* distance matrix with phylogenetic tree & ids in tree are mRNA
+* distance matrix with phylogenetic tree & ids in tree are mRNA (the order is the given tree tips)
 
 `gene_cluster_matrix -g sample.gff3 -t sample.nwk -f mRNA -o output_name`
 
-* distance matrix with phylogenetic tree & clade information
+* distance matrix with phylogenetic tree & clade information (the order is the given tree tips)
 
 `gene_cluster_matrix -g sample.gff3 -t sample.nwk -c clade.csv -o output_name`
 
