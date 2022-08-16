@@ -43,13 +43,13 @@ c.f.) Lunux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 ### Input & Option
 ```
 (required)
--g or -c … GFF3 fomrat file (gff3 file) / position data file (csv file)
+-g or -c … GFF3 fomrat file of reference genome(gff3 file) / position data file (csv file. ex:sample/position.csv)
 -i or -t … Gene id list ordered by your preference (txt file) / phylogenetic tree file (newick format)
 -o … Output file name (string)
 (optional)
 -d … Threshold distance to define gene cluster. (int. default=50000)
 -f … Specify gff feature type (gene or mRNA) of input ids. (string. default=gene)
--s … Clade information to separate gene/mRNA ids. (csv file. ex:sample/clade.csv)
+-s … Clade information for each gene/mRNA id. Format should be same as sample/clade.csv. (csv file. 1st column is ids, second column is clade for each id.)
 ```
 
 ### Example
