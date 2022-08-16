@@ -1,6 +1,6 @@
 # Author: Toshiyuki Sakai <toshi6661024@gmail.com>
 # Copyright (c) 2022- Toshiyuki Sakai
-# License: BSD 3 clause
+# License: MIT
 
 from setuptools import setup
 import gene_cluster_matrix
@@ -10,6 +10,7 @@ NAME = 'gene_cluster_matrix'
 AUTHOR = 'Toshiyuki Sakai'
 AUTHOR_EMAIL = 'toshi6661024@gmail.com'
 URL = 'https://github.com/slt666666/gene_cluster_matrix'
+LICENSE = 'MIT'
 VERSION = gene_cluster_matrix.__version__
 PYTHON_REQUIRES = ">=3.6"
 
@@ -33,7 +34,8 @@ ENTRY_POINTS = {
         ],
     }
 
-PYTHON_REQUIRES = '>=3.6'
+with open('README.md', 'r') as fp:
+    long_description = fp.read()
 
 setup(
     name=NAME,
@@ -42,9 +44,12 @@ setup(
     maintainer=AUTHOR,
     maintainer_email=AUTHOR_EMAIL,
     description=DESCRIPTION,
+    long_description=long_description,
+    license=LICENSE,
     url=URL,
     version=VERSION,
     install_requires=INSTALL_REQUIRES,
     python_requires=PYTHON_REQUIRES,
+    package=PACKAGES,
     entry_points=ENTRY_POINTS,
 )
