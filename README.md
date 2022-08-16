@@ -1,9 +1,8 @@
 # Gene Cluster Matrix
 
-<img src="image/sample_matrix.png" width="200">
-
 ## Description
-**Gene cluter matrix** is a command line tool to generate matrix that visualize distances between genes and gene clusters. The matrix is generated as interactive html file. This tool can also visualize phylogenetic tree and phylogenetically related & unrelated gene clusters.
+
+<p><img src="image/sample_matrix.png"　itemprop="image" width="360" align="right" /><a>Gene cluter matrix</a> is a command line tool to generate matrix that visualize distances between genes and gene clusters. The matrix is generated as interactive html file. This tool can also visualize phylogenetic tree and phylogenetically related & unrelated gene clusters.</p>
 
 Gene cluster matrix is developed by Python program and distributed under the MIT license.
 
