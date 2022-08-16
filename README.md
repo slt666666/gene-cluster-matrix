@@ -33,11 +33,11 @@ c.f.) Linux:`sudo apt-get install ghostscript`, Mac:`brew install ghostscript`
 
 * distance matrix with phylogenetic tree & ids in tree are mRNA
 
-`gene_cluster_matrix -g sample.gff3 -t tree.nwk -f mRNA -o output_name`
+`gene_cluster_matrix -g sample.gff3 -t sample.nwk -f mRNA -o output_name`
 
 * distance matrix with phylogenetic tree & clade information
 
-`gene_cluster_matrix -g sample.gff3 -t tree.nwk -c clade.csv -o output_name`
+`gene_cluster_matrix -g sample.gff3 -t sample.nwk -c clade.csv -o output_name`
 
 ### Input & Option
 ```
