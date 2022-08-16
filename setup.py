@@ -16,12 +16,11 @@ PYTHON_REQUIRES = ">=3.6"
 INSTALL_REQUIRES = [
     'numpy',
     'pandas',
-    'argparse',
     'plotly',
     'gffutils',
     'toytree',
     'toyplot',
-    'PIL'
+    'Pillow'
 ]
 
 PACKAGES = [
