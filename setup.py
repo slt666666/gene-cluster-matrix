@@ -20,7 +20,7 @@ INSTALL_REQUIRES = [
     'plotly',
     'gffutils',
     'toytree',
-    'toyplot',
+    'toyplot @ git+ssh://git@github.com:sandialabs/toyplot.git',
     'Pillow'
 ]
 
