@@ -9,8 +9,13 @@ Gene cluster matrix is developed by Python program and distributed under the MIT
 
 ## Install
 
-`pip install --requirement https://raw.githubusercontent.com/slt666666/gene-cluster-matrix/main/requirements.txt` ... install plotly
-`pip install gene_cluster_matrix` ... install other libraries
+1. install toyplot
+
+`pip install --requirement https://raw.githubusercontent.com/slt666666/gene-cluster-matrix/main/requirements.txt`
+
+2. install other libraries
+
+`pip install gene_cluster_matrix`
 
 ## Dependencies
 gene_cluster_matrix requires below libraries. (`pip install` automatically install dependencies)
