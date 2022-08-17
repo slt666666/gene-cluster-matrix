@@ -124,7 +124,7 @@ def heatmap(z_data, text, order, out, clade):
         fig.update_layout(shapes=lines)
 
     # generate html file
-    plot(fig, filename="{}.html".format(out))
+    plot(fig, filename="{}.html".format(out), auto_open=False)
     print("finish generating {}.html file".format(out))
 
 def heatmap_with_tree(z_data, text, order, out, tree, clade):
