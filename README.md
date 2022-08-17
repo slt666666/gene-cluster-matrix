@@ -19,7 +19,7 @@ gene_cluster_matrix requires below libraries. (`pip install` automatically insta
 * plotly (>= 5.3.0)
 * gffutils (>= 0.11.0)
 * toytree (>= 2.0.1)
-* toyplot (>= 1.0.1)
+* toyplot (>= 1.0.2.dev0)
 * Pillow (>= 9.2.0)
 
 `ghostscript` is required to generate phylogenetic tree image.
