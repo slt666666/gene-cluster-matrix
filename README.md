@@ -9,7 +9,8 @@ Gene cluster matrix is developed by Python program and distributed under the MIT
 
 ## Install
 
-`pip install gene_cluster_matrix`
+`python -m pip install --requirement https://raw.githubusercontent.com/slt666666/gene-cluster-matrix/main/requirements.txt` ... install plotly
+`pip install gene_cluster_matrix` ... install other libraries
 
 ## Dependencies
 gene_cluster_matrix requires below libraries. (`pip install` automatically install dependencies)
@@ -19,8 +20,10 @@ gene_cluster_matrix requires below libraries. (`pip install` automatically insta
 * plotly (>= 5.3.0)
 * gffutils (>= 0.11.0)
 * toytree (>= 2.0.1)
-* toyplot (>= 1.0.2.dev0)
 * Pillow (>= 9.2.0)
+
+`toyplot` library is required to install independently.
+* toyplot (>= 1.0.2.dev0)
 
 `ghostscript` is required to generate phylogenetic tree image.
 
