@@ -44,6 +44,10 @@ The distance matrix visualize gene clusters. Gene cluster is a group of two or m
 
 `gene_cluster_matrix -g sample.gff3 -i id_list.txt -f mRNA -o output_name`
 
+* simple distance matrix. Set distance threshold as 1000000bp to define gene cluster.
+
+`gene_cluster_matrix -g sample.gff3 -i id_list.txt -d 1000000 -f mRNA -o output_name`
+
 * simple distance matrix by hand-made position data (the order is the given list order)
 
 `gene_cluster_matrix -p position.csv -i id_list.txt -f mRNA -o output_name`
