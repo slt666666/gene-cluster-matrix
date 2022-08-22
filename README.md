@@ -38,7 +38,8 @@ Windows: https://ghostscript.com/releases/gsdnld.html
 
 ## Usage example1: Distance matrix
 
-The distance matrix visualize gene clusters. Gene cluster is a group of two or more genes that located within a few thousand ~ tens thousand base pairs of each other. The matrix also visualize distances between genes in the gene cluster as a color. In here, distance means physical distance in nucleotides in the genome.
+<p><img src="https://github.com/slt666666/gene_cluster_matrix/blob/main/image/sample_matrix.png?raw=true"　itemprop="image" width="200" align="right" />
+The distance matrix visualize gene clusters. Gene cluster is a group of two or more genes that located within a few thousand ~ tens thousand base pairs of each other. The matrix also visualize distances between genes in the gene cluster as a color. In here, distance means physical distance in nucleotides in the genome.</p>
 
 * simple distance matrix (the order is the given list order)
 
@@ -54,9 +55,10 @@ The distance matrix visualize gene clusters. Gene cluster is a group of two or m
 
 ## Usage example2: Distance matrix with phylogenetic tree (& clade information)
 
+<p><img src="https://github.com/slt666666/gene_cluster_matrix/blob/main/image/sample_matrix.png?raw=true"　itemprop="image" width="200" align="right" />
 Basically, there are 2 cases; Case 1 is genes in cluster show a similar function. Case 2 is genes in cluster show different functions. To identify case 2 type, phylogenetic analysis is one of the useful approaches. By ordering genes in distance matrix based on phylogenetic tree, we can identify gene clusters that consist of phylogenetically related genes and gene clusters that consist of phylogenetically unrelated genes.
 
-This library enable us to visualize distance matrix of Usage example1 ordered by provided phylogenetic tree file. And if phylogenetic clade information is also provided, it will be also visualized.
+This library enable us to visualize distance matrix of Usage example1 ordered by provided phylogenetic tree file. And if phylogenetic clade information is also provided, it will be also visualized.</p>
 
 * distance matrix with phylogenetic tree (the order is the given tree tips)
 
