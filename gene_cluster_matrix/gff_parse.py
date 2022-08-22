@@ -42,6 +42,9 @@ def get_position_from_gff(gff_file, gff_feature, ids, out):
     noinfo = [i for i in ids if i not in position.id.values]
     if len(noinfo) > 0:
         print(noinfo, "are no information in gff file, so they are removed for further process.")
+    if len(order) == 0:
+        print("All provided ids could not get position data from gff file. -f option might be misspecified.")
+        sys.exit()
     # save position data as csv file
     position.to_csv("{}_position.csv".format(out), index=None)
     print("finish generating {}_position.csv".format(out))
