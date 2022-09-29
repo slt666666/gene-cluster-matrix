@@ -46,7 +46,7 @@ class GeneClusterMatrix:
     def get_position_and_order(self):
         # return position/ordered ids from gff file or csv file or tree file
         if self.gff_csv != None:
-            return csv_parse(self.gff_csv, self.clade, self.tree)
+            return csv_parse(self.gff_csv, self.clade, self.id_list, self.tree)
         elif self.id_list != None:
             return gff_parse(self.gff, self.gff_feature, self.out, self.id_list, self.clade)
         elif self.tree != None:

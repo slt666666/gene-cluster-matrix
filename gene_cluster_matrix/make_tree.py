@@ -71,5 +71,5 @@ def make_tree_figure(tree, out, order, clade):
     rotate_image = img.rotate(90, expand=True)
     left_image = ImageOps.flip(rotate_image.crop(rotate_image.getbbox()))
 
-    return top_image, left_image
+    return top_image, left_image, tree.get_tip_labels()
 

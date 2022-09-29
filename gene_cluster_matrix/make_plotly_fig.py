@@ -194,7 +194,7 @@ def heatmap_with_tree(z_data, text, order, out, tree, clade):
     fig.update_layout(layout)
 
     # generate png image file of phylogenetic tree
-    top_tree, left_tree = make_tree_figure(tree, out, order, clade)
+    top_tree, left_tree, order = make_tree_figure(tree, out, order, clade)
     # add top tree
     fig.add_layout_image(
         dict(
