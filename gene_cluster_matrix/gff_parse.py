@@ -19,6 +19,14 @@ def check_clade(order, clade):
             print("Clade file missed some ids in id_list or tree or gff_csv file.")
             sys.exit()
 
+def get_gff_ids(gff_file, gff_feature):
+    gff_ids = list()
+    db = gffutils.create_db(gff_file, ':memory:', merge_strategy='create_unique', keep_order=False, sort_attribute_values=False)
+    for feature in db.features_of_type(gff_feature, order_by=['seqid', 'start']):
+        name = feature.attributes['Name'][0]
+        gff_ids.append(name)
+    return gff_ids
+
 def get_position_from_gff(gff_file, gff_feature, ids, out):
     print("start parse gff file.")
     position = list()
@@ -57,7 +65,7 @@ def gff_parse(gff_file, gff_feature, out, id_list, clade):
     return position, order
 
 def gff_tree_parse(gff_file, gff_feature, out, tree, clade):
-    ids = get_leaf_order(tree)
+    ids = get_leaf_order(tree, get_gff_ids(gff_file, gff_feature))
     position, order = get_position_from_gff(gff_file, gff_feature, ids, out)
     check_clade(order, clade)
     return position, order
@@ -65,7 +73,7 @@ def gff_tree_parse(gff_file, gff_feature, out, tree, clade):
 def csv_parse(gff_csv, clade, id_list, tree):
     position = pd.read_csv(gff_csv)
     if tree != None:
-        order = get_leaf_order(tree)
+        order = get_leaf_order(tree, position.id.values)
         order = [i for i in order if i in position.id.values]
     else:
         order = read_txt_list(id_list)

@@ -10,12 +10,16 @@ from PIL import Image, ImageOps
 # The input file is newick format.
 # maketree() function generate tree image(png file) and customized PIL objects for matrix.
 
-def get_leaf_order(tree):
+def get_leaf_order(tree, ids):
     # load a toytree from a newick string
     f = open(tree, 'r')
     nwk = f.read()
     f.close()
     tree = toytree.tree(nwk, tree_format=0)
+    # remove tips (no info in gff file) from tree
+    tree_ids = tree.get_tip_labels()
+    drop_ids = [i for i in tree_ids if i not in ids]
+    tree = tree.drop_tips(drop_ids)
     return tree.get_tip_labels()
 
 def make_tree_figure(tree, out, order, clade):
@@ -71,5 +75,5 @@ def make_tree_figure(tree, out, order, clade):
     rotate_image = img.rotate(90, expand=True)
     left_image = ImageOps.flip(rotate_image.crop(rotate_image.getbbox()))
 
-    return top_image, left_image, tree.get_tip_labels()
+    return top_image, left_image
 

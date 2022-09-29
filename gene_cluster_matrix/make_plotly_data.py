@@ -51,6 +51,7 @@ def heatmap_matrix(distance, threshold):
 def hover_text(distance, order, clade):
     if clade != None:
         clade_df = pd.read_csv(clade, index_col=0)
+        clade_df = clade_df.loc[order, :]
 
     hovertext = list()
     for yi, yy in enumerate(order[::-1]):
